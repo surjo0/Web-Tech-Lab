@@ -1,0 +1,81 @@
+import React, { useState } from 'react';
+
+const CurrencyConverter = () => {
+  // State variables
+  const [amount, setAmount] = useState('');
+  const [fromCurrency, setFromCurrency] = useState('USD');
+  const [toCurrency, setToCurrency] = useState('EUR');
+  const [convertedAmount, setConvertedAmount] = useState('');
+
+  // Hard-coded exchange rates
+  const exchangeRates = {
+    USD: { EUR: 0.85, GBP: 0.72, CAD: 1.27 },
+    EUR: { USD: 1.18, GBP: 0.85, CAD: 1.48 },
+    GBP: { USD: 1.39, EUR: 1.18, CAD: 1.74 },
+    CAD: { USD: 0.79, EUR: 0.68, GBP: 0.57 }
+    // Add more currencies as needed
+  };
+
+  // Function to handle amount change
+  const handleAmountChange = (event) => {
+    const value = event.target.value;
+    setAmount(value);
+  };
+
+  // Function to handle from currency change
+  const handleFromCurrencyChange = (event) => {
+    const value = event.target.value;
+    setFromCurrency(value);
+  };
+
+  // Function to handle to currency change
+  const handleToCurrencyChange = (event) => {
+    const value = event.target.value;
+    setToCurrency(value);
+  };
+
+  // Function to handle conversion
+  const handleConvert = () => {
+    const exchangeRate = exchangeRates[fromCurrency][toCurrency];
+    const result = parseFloat(amount) * exchangeRate;
+    setConvertedAmount(result.toFixed(2));
+  };
+
+  return (
+    <div>
+      <h1>Currency Converter</h1>
+      <div>
+        <label>Amount:</label>
+        <input type="number" value={amount} onChange={handleAmountChange} />
+      </div>
+      <div>
+        <label>From Currency:</label>
+        <select value={fromCurrency} onChange={handleFromCurrencyChange}>
+          <option value="USD">USD</option>
+          <option value="EUR">EUR</option>
+          <option value="GBP">GBP</option>
+          <option value="CAD">CAD</option>
+        </select>
+      </div>
+      <div>
+        <label>To Currency:</label>
+        <select value={toCurrency} onChange={handleToCurrencyChange}>
+          <option value="USD">USD</option>
+          <option value="EUR">EUR</option>
+          <option value="GBP">GBP</option>
+          <option value="CAD">CAD</option>
+        </select>
+      </div>
+      <button onClick={handleConvert}>Convert</button>
+      <div>
+        {convertedAmount && (
+          <p>
+            Converted Amount: {convertedAmount} {toCurrency}
+          </p>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default CurrencyConverter;
