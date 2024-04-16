@@ -1,0 +1,103 @@
+// src/App.js
+import React, { useState, useEffect } from 'react';
+import firebase from 'firebase/app';
+import 'firebase/auth';
+
+import 'firebase/firestore';
+// Initialize Firebase (replace with your own config)
+const firebaseConfig = {
+apiKey: 'YOUR_API_KEY',
+authDomain: 'YOUR_AUTH_DOMAIN',
+projectId: 'YOUR_PROJECT_ID',
+storageBucket: 'YOUR_STORAGE_BUCKET',
+messagingSenderId: 'YOUR_MESSAGING_SENDER_ID',
+appId: 'YOUR_APP_ID',
+};
+
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+
+function App() {
+const [user, setUser] = useState(null);
+const [messages, setMessages] = useState([]);
+const [newMessage, setNewMessage] = useState('');
+useEffect(() => {
+// Listen for authentication state changes
+firebase.auth().onAuthStateChanged((authUser) => {
+if (authUser) {
+setUser(authUser);
+} else {
+setUser(null);
+}
+});
+// Fetch chat messages from Firestore
+const unsubscribe =
+db.collection('messages').orderBy('timestamp').onSnapshot((sn
+apshot) => {
+
+const messageData = snapshot.docs.map((doc) =>
+doc.data());
+setMessages(messageData);
+});
+return () => unsubscribe();
+}, []);
+const handleSignIn = async () => {
+try {
+const provider = new firebase.auth.GoogleAuthProvider();
+await firebase.auth().signInWithPopup(provider);
+} catch (error) {
+console.error('Error signing in:', error.message);
+}
+};
+
+const handleSignOut = async () => {
+try {
+await firebase.auth().signOut();
+} catch (error) {
+console.error('Error signing out:', error.message);
+}
+};
+
+const handleSendMessage = async () => {
+if (newMessage.trim() !== '') {
+await db.collection('messages').add({
+text: newMessage,
+userId: user.uid,
+timestamp:
+
+firebase.firestore.FieldValue.serverTimestamp(),
+});
+setNewMessage('');
+
+}
+};
+
+return (
+<div className="App">
+{user ? (
+<>
+<button onClick={handleSignOut}>Sign Out</button>
+<div>
+{messages.map((message) => (
+<div key={message.timestamp}>
+{message.text}
+</div>
+))}
+</div>
+<input
+type="text"
+value={newMessage}
+onChange={(e) => setNewMessage(e.target.value)}
+/>
+<button onClick={handleSendMessage}>Send</button>
+</>
+) : (
+<button onClick={handleSignIn}>Sign In with
+
+Google</button>
+)}
+</div>
+);
+}
+
+export default App;
