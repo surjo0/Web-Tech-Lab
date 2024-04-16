@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Product S-MART</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Protest+Riot&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <a href="Html.html"></a><img src="images/logo-white.png" width="125px">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="Html.html">Home</a></li>
+                    <li><a href="product.html">Product</a></li>
+                    <li><a href="About.html">About</a></li>
+                    <li><a href="">Content</a></li>
+                    <li><a href="Account.html">Account</a></li>
+                </ul>
+            </nav>
+            <a href="cart.html"><img src="images/cart.png" width="30px" height="30px"></a>
+            
+        </div>
+        
+    </div>
+
+    <div class="smallcont singlep">
+        <div class="row">
+            <div class="col-2">
+                <img src="images/gallery-1.jpg" width="100%" id="proimg">
+                <div class="smallimgrow">
+                    <div class="smallimgcol">
+                        <img src="images/gallery-1.jpg" width="100%" class="smallimg">
+                    </div>
+                    <div class="smallimgcol">
+                        <img src="images/gallery-2.jpg" width="100%" class="smallimg">
+                    </div>
+                    <div class="smallimgcol">
+                        <img src="images/gallery-3.jpg" width="100%" class="smallimg">
+                    </div>
+                    <div class="smallimgcol">
+                        <img src="images/gallery-4.jpg" width="100%" class="smallimg">
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="col-2">
+                <p>Home / Blue Kurta</p>
+                <h1>Blue Kurta by Aarong</h1>
+                <h4>3000</h4>
+                <select>
+                    <option>Select Size</option>
+                    <option>L</option>
+                    <option>XL</option>
+                    <option>XXL</option>
+                </select>
+                <input type="number" value="1">
+                <a href="" class="btn">Add To Cart</a>
+                <h3>Product Details</h3>
+                <br>
+                <p>The kurta is a striking blue color with a textured pattern, giving it an elegant appearance. It features a classic straight cut with long sleeves, suitable for various occasions. The material is comfortable and breathable, ideal for casual or semi-formal wear.</p>
+            </div>
+        </div>
+    </div>
+
+<div class="smallcont">
+    <div class="r2">
+        <h2>
+            Related Products
+        </h2>
+    </div>
+</div>
+
+
+    <div class="smallcont">
+
+        <div class="row">
+            
+            <div class="col-4">
+                <img src="images/product-3.jpg" >
+                <h4>Joggers</h4>
+                <p>₹1000</p>
+            </div>
+            <div class="col-4">
+                <img src="images/product-12.jpg" >
+                <h4>Joggers</h4>
+                <p>₹800</p>
+            </div>
+            <div class="col-4">
+                <img src="images/pr1.jpg" >
+                <h4>T Shirt</h4>
+                <p>₹600</p>
+            </div>
+            <div class="col-4">
+                <img src="images/pr2.jpg" >
+                <h4>T Shirt</h4>
+                <p>₹600</p>
+            </div>
+            <div class="col-4">
+                <img src="images/s69.jpg" >
+                <h4>Shirt</h4>
+                <p>₹1500</p>
+            </div>
+            <div class="col-4">
+                <img src="images/s70.jpg" >
+                <h4>T Shirt</h4>
+                <p>₹800</p>
+            </div>
+            <div class="col-4">
+                <img src="images/p19.jpg" >
+                <h4>T Shirt</h4>
+                <p>₹600</p>
+            </div>
+            <div class="col-4">
+                <img src="images/p22.jpg" >
+                <h4>T Shirt</h4>
+                <p>₹600</p>
+            </div>
+
+        
+        </div>
+        
+    </div>
+
+    
+
+
+
+    <div class="footer">
+        <div class="container">
+            <div class="roe">
+                <div class="footer-col-1">
+                    <h3>Download App</h3>
+                    <p>Download app for Android and ios mobile phone</p>
+                    <div class="applogo">
+                        <img src="images/app-store.png" >
+                        <img src="images/play-store.png" >
+                    </div>
+                </div>
+                <div class="footer-col-2">
+                    <img src="images/logo-white.png" >
+                </div>
+                <div class="footer-col-4">
+                    <h3>Follow Us</h3>
+                    <ul>
+                        <li>Facebook</li>
+                        <li>Twitter</li>
+                        <li>Instagram</li>
+                        <li>Youtube</li>
+                    </ul>
+
+                </div>
+            </div>
+            <hr>
+            <p>Created by Surjo Dey. For Web Tech Project</p>
+        </div>
+    </div>
+
+<script>
+    var proimg = document.getElementById("proimg");
+    var smallimg = document.getElementsByClassName("smallimg");
+    smallimg[0].onclick = function(){
+        proimg.src = smallimg[0].src;
+    }
+    smallimg[1].onclick = function(){
+        proimg.src = smallimg[1].src;
+    }
+    smallimg[2].onclick = function(){
+        proimg.src = smallimg[2].src;
+    }
+    smallimg[3].onclick = function(){
+        proimg.src = smallimg[3].src;
+    }
+</script>
+    
+</body>
+</html>
